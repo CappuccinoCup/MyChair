@@ -2,7 +2,7 @@
   <div id="base_register">
     <el-form :model="registerForm" :rules="rules" label-position="left" label-width="0px"
              v-loading="loading" :ref="registerForm" class="register_container">
-      <h3 class="register_title">注册</h3>
+      <h2 class="register_title">注册</h2>
       <el-form-item prop="username">
         <el-input type="text" v-model="registerForm.username"
                   auto-complete="off" placeholder="用户名"></el-input>
@@ -29,7 +29,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" v-on:click="register(registerForm)"
-                   style="width: 100%;background: #909399;border: none">注册
+                   style="width: 100%;background:#5599FF;border: none;opacity: 0.6">注册
         </el-button>
       </el-form-item>
     </el-form>
@@ -182,12 +182,11 @@
   .register_container {
     border-radius: 15px;
     background-clip: padding-box;
-    margin: 60px auto;
+    margin: 70px auto;
     width: 350px;
-    padding: 80px 80px 60px 80px;
-    background: #fff;
+    padding: 50px 90px 30px 90px;
+    background: rgba(255, 255, 255, 0.6);
     border: 1px solid #eaeaea;
-    box-shadow: 0 0 25px #cac6c6;
   }
 
   .register_title {

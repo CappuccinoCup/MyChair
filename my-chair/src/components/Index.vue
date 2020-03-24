@@ -125,6 +125,10 @@
     text-align: center;
   }
 
+  h3 {
+    margin: 20px 0;
+  }
+
   #home_menu {
     text-align: left;
   }

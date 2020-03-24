@@ -2,7 +2,7 @@
   <div id="base_login">
     <el-form :model="loginForm" :rules="rules" label-position="left" label-width="0px"
              v-loading="loading" :ref="loginForm" class="login_container">
-      <h3 class="login_title">登录</h3>
+      <h2 class="login_title">登录</h2>
       <el-form-item prop="username">
         <el-input type="text" v-model="loginForm.username"
                   auto-complete="off" placeholder="用户名"/>
@@ -15,13 +15,13 @@
         <el-row>
           <el-col :span="10" :offset="1">
             <el-button type="primary" v-on:click="login(loginForm)"
-                       style="width: 100%;background: #909399;border: none">登录
+                       style="width: 100%;background:#5599FF;border: none;opacity: 0.6">登录
             </el-button>
           </el-col>
           <el-col :span="10" :offset="2">
             <router-link to="/register">
               <el-button type="primary"
-                         style="width: 100%;background: #C0C4CC;border: none">注册
+                         style="width: 100%;background:#5599FF;border: none;opacity: 0.6">注册
               </el-button>
             </router-link>
           </el-col>
@@ -105,25 +105,19 @@
     position: fixed;
   }
 
-  body {
-    margin: 0;
-    padding: 0;
-  }
-
   .login_container {
     border-radius: 15px;
     background-clip: padding-box;
-    margin: 90px auto;
+    margin: 120px auto;
     width: 350px;
     padding: 90px 90px 70px 90px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.6);
     border: 1px solid #eaeaea;
-    box-shadow: 0 0 25px #cac6c6;
   }
 
   .login_title {
     margin: 0 auto 40px auto;
     text-align: center;
-    color: #494e8f;
+    color: #505458;
   }
 </style>
