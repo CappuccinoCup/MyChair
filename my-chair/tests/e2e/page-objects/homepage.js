@@ -24,24 +24,24 @@ module.exports = {
       selector: '#app',
 
       elements: {
-        logo: 'img'
+        col: '[data-nw=v-col]'
       },
 
       // - a page object section can also have sub-sections
       // - elements or sub-sections located here are retrieved using the "app" section as the base
       sections: {
-        headline: {
-          selector: 'h1'
+        bar: {
+          selector: '[data-nw=welcome-bar]'
         },
 
         welcome: {
           // the equivalent css selector for the "welcome" sub-section would be:
-          //  '#app div.hello'
-          selector: 'div.hello',
+          //  '#app [data-nw=v-hello]'
+          selector: '[data-nw=welcome-hello]',
 
           elements: {
-            cliPluginLinks: {
-              selector: 'ul',
+            firstTitle: {
+              selector: '[data-nw=v-col] h1',
               index: 0
             }
           }

@@ -14,17 +14,17 @@ module.exports = {
     homepage.waitForElementVisible('@appContainer');
 
     const app = homepage.section.app;
-    app.assert.elementCount('@logo', 1);
+    app.assert.elementCount('@col', 5);
     app.expect.section('@welcome').to.be.visible;
-    app.expect.section('@headline').text.to.match(/^Welcome to Your Vue\.js (.*)App$/);
+    app.expect.section('@bar').text.to.match(/^Latest Release$/i);
 
     browser.end();
   },
 
-  'verify if string "e2e-nightwatch" is within the cli plugin links': (browser) => {
+  'verify if string "Ecosystem" is within the title': (browser) => {
     const homepage = browser.page.homepage();
     const welcomeSection = homepage.section.app.section.welcome;
 
-    welcomeSection.expect.element('@cliPluginLinks').text.to.contain('e2e-nightwatch');
+    welcomeSection.expect.element('@firstTitle').text.to.contain('Welcome to Vuetify');
   }
 };

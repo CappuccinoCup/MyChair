@@ -4,6 +4,7 @@
       app
       color="primary"
       dark
+      data-nw="welcome-bar"
     >
       <div class="d-flex align-center">
         <v-img
@@ -37,7 +38,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-content>
+    <v-content data-nw="welcome-hello">
       <HelloWorld/>
     </v-content>
   </div>
