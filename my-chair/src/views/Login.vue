@@ -129,21 +129,23 @@
                                 this.snackbarMessage = 'login success';
                                 this.snackbarType = 'success';
                                 this.$store.commit('login', resp.data);
-                                this.$router.replace({path: '/home'});
+                                setTimeout(() => {
+                                    this.overlay = false;
+                                    this.$router.replace({path: '/home'});
+                                }, 2000);
                             } else {
                                 this.showSnackbar = true;
                                 this.snackbarMessage = 'login error';
                                 this.snackbarType = 'error';
+                                this.overlay = false;
                             }
                         })
                         .catch(error => {
                             this.showSnackbar = true;
-                            this.snackbarMessage = (error.message === "用户名错误" || error.message === "密码错误") ?
+                            this.snackbarMessage = (error.message === "Request failed with status code 401"
+                                || error.message === "Request failed with status code 404") ?
                                 "wrong username or password" : 'login fail, please check your network connection';
                             this.snackbarType = 'error';
-                        })
-                        .finally(() => {
-                            // 隐藏 overlay
                             this.overlay = false;
                         })
                 }
