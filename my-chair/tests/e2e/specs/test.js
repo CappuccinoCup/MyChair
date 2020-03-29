@@ -6,7 +6,7 @@ module.exports = {
     browser
       .init()
       .waitForElementVisible('#app')
-      .assert.elementPresent('#app [data-test=content')
+      .assert.elementPresent('#start [data-test=content')
       .assert.containsText('[data-test=header]', 'Welcome to MyChair')
       .assert.elementCount('canvas', 1)
       .end()
@@ -15,7 +15,7 @@ module.exports = {
   'MyChair start page e2e test using a custom command': browser => {
     browser
       .openStartpage()
-      .assert.elementPresent('#app [data-test=content]')
+      .assert.elementPresent('#start [data-test=content]')
       .end()
   }
 };

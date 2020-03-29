@@ -22,7 +22,7 @@ module.exports = {
   // Or a page objects can also have sections
   sections: {
     app: {
-      selector: '#welcome',
+      selector: '#start',
 
       elements: {
         content: '[data-test=content]'

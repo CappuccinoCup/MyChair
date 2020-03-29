@@ -1,5 +1,5 @@
 <template>
-  <v-app id="Home">
+  <v-app id="home">
     <Navigation></Navigation>
     <v-content>
       <router-view/>

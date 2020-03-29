@@ -1,5 +1,5 @@
 <template>
-  <v-app id="welcome">
+  <v-app id="start">
     <Navigation></Navigation>
     <v-content data-test="content">
       <v-container class="mb-12 pb-12">
@@ -65,7 +65,7 @@
 </script>
 
 <style>
-  #welcome {
+  #start {
     background: url("/img/welcome_bg.jpg") center fixed;
   }
 </style>
