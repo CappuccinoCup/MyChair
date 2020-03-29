@@ -1,15 +1,15 @@
 <template>
-  <v-app>
+  <v-app id="welcome">
     <Navigation></Navigation>
-    <v-content id="welcome">
+    <v-content data-test="content">
       <v-container class="mb-12 pb-12">
-        <v-row justify="center">
-          <v-img :src="require('../assets/MyChair_logo.png')" max-width="300px" max-height="300px" ></v-img>
+        <v-row justify="center" data-test="row">
+          <v-img :src="require('../assets/MyChair_logo.png')" max-width="300px" max-height="300px" data-test="logo"></v-img>
         </v-row>
-        <v-row align="center">
+        <v-row align="center" data-test="row">
           <v-col cols="12" md="7">
-            <v-card color="rgba(255,255,255,0.3)">
-              <v-card-title class="display-1 font-weight-light">Welcome to MyChair</v-card-title>
+            <v-card color="rgba(255,255,255,0.3)" data-test="welcome">
+              <v-card-title class="display-1 font-weight-light" data-test="header">Welcome to MyChair</v-card-title>
               <v-card-subtitle class="title font-weight-thin">Easy or hard, it depends</v-card-subtitle>
               <v-card-text class="headline font-weight-light">MyChair is a magical website.
                 It is growing every day and every night, but nobody exactly knows how it will be like...
@@ -17,9 +17,9 @@
             </v-card>
           </v-col>
           <v-col cols="12" md="5">
-            <v-row justify="center">
+            <v-row justify="center" data-test="row">
               <v-btn rounded color="rgba(225,225,225,0)" width="270px" height="90px" style="z-index: 1"
-                     @click="startNow">
+                     @click="startNow" data-test="startBtn">
                 <div class="display-1 font-weight-thin">START NOW</div>
               </v-btn>
             </v-row>

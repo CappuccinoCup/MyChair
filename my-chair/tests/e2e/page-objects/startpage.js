@@ -15,33 +15,36 @@ module.exports = {
 
   // A page object can have elements
   elements: {
+    // vuetify 的 <v-app> 标签自带 id="app"
     appContainer: '#app'
   },
 
   // Or a page objects can also have sections
   sections: {
     app: {
-      selector: '#app',
+      selector: '#welcome',
 
       elements: {
-        col: '[data-nw=v-col]'
+        content: '[data-test=content]'
       },
 
       // - a page object section can also have sub-sections
       // - elements or sub-sections located here are retrieved using the "app" section as the base
       sections: {
-        bar: {
-          selector: '[data-nw=welcome-bar]'
+        logo: {
+          selector: '[data-test=logo]'
         },
-
+        startBtn: {
+          selector: '[data-test=startBtn]'
+        },
         welcome: {
           // the equivalent css selector for the "welcome" sub-section would be:
           //  '#app [data-nw=v-hello]'
-          selector: '[data-nw=welcome-hello]',
+          selector: '[data-test=welcome]',
 
           elements: {
-            firstTitle: {
-              selector: '[data-nw=v-col] h1',
+            header: {
+              selector: '[data-test=header]',
               index: 0
             }
           }

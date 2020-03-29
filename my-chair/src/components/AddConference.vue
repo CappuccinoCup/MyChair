@@ -148,7 +148,6 @@
                             this.snackbarType = 'error';
                         }
                     }).catch(error => {
-                        console.log(error);
                         this.showSnackbar = true;
                         this.snackbarMessage = (error.message === 'Request failed with status code 500' ?
                             'submit error, please check your network connection' : 'user authentication fail');

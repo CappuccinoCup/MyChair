@@ -2,20 +2,20 @@
 // https://nightwatchjs.org/guide
 
 module.exports = {
-  'default e2e tests': browser => {
+  'MyChair start page e2e tests': browser => {
     browser
       .init()
       .waitForElementVisible('#app')
-      .assert.elementPresent('#app [data-nw=welcome-bar]')
-      .assert.containsText('h1', 'Welcome to Vuetify')
-      .assert.elementCount('p', 1)
+      .assert.elementPresent('#app [data-test=content')
+      .assert.containsText('[data-test=header]', 'Welcome to MyChair')
+      .assert.elementCount('canvas', 1)
       .end()
   },
 
-  'example e2e test using a custom command': browser => {
+  'MyChair start page e2e test using a custom command': browser => {
     browser
-      .openHomepage()
-      .assert.elementPresent('#app [data-nw=welcome-bar]')
+      .openStartpage()
+      .assert.elementPresent('#app [data-test=content]')
       .end()
   }
 };

@@ -128,14 +128,12 @@
                         title: (this.$store.state.userDetails ? this.$store.state.userDetails.username : 'friend A'),
                         linkTo: function () {
                             // TODO: developing user's person center
-                            console.log('username clicked');
                         }
                     },
                     {
                         title: 'more',
                         linkTo: function () {
                             // TODO: developing more about user's account
-                            console.log('more clicked');
                         }
                     }
                 ]
