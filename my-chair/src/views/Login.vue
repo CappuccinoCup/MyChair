@@ -40,10 +40,10 @@
                 </v-toolbar>
                 <v-form ref="form" class="ma-7 mb-n5">
                   <v-text-field v-model="username" label="username" append-icon="mdi-account"
-                                ref="username" outlined clearable
+                                ref="username" outlined
                                 :rules="[() => !!username || 'username is required']"></v-text-field>
                   <v-text-field v-model="password" label="password" append-icon="mdi-fingerprint"
-                                ref="password" outlined clearable type="password"
+                                ref="password" outlined type="password"
                                 :rules="[() => !!password || 'password is required']"></v-text-field>
                 </v-form>
               </v-card-text>

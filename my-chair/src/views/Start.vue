@@ -37,7 +37,7 @@
     import background from '../assets/welcome_bg'
 
     export default {
-        name: 'Welcome',
+        name: 'Start',
         components: {
             Navigation, Footer
         },
@@ -57,6 +57,7 @@
         },
         beforeRouteLeave(to, from, next) {
             // 离开页面时移除动态 canvas 背景
+            // canvas 的 id 会改变，因此使用标签名作为索引
             document.body.removeChild(document.getElementsByTagName('canvas')[0]);
             next();
         }
