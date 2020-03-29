@@ -14,7 +14,7 @@
     <v-container fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" sm="9">
-          <v-card shaped color="rgba(255,255,255,0.3)" id="addConference_base">
+          <v-card shaped :color="whiteOpacity" id="addConference_base">
             <v-card-title class="display-2">
               Add Conference
             </v-card-title>
@@ -110,6 +110,10 @@
                     deadline: this.deadline,
                     dateReleased: this.dateReleased
                 }
+            },
+            whiteOpacity: function () {
+                // 用来调整组件在不同主题下的透明度
+                return this.$vuetify.theme.dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.3)';
             }
         },
         methods: {

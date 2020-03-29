@@ -73,7 +73,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app clipped-left flat color="#FFFFFF">
+    <v-app-bar app clipped-left flat :color="whiteOpacity">
       <v-app-bar-nav-icon class="d-lg-none" v-if="drawerVisible" @click.stop="drawer = !drawer"/>
       <v-img src="../assets/MyChair_logo.png" alt="MyChair Logo" max-height="50px" max-width="50px"></v-img>
       <v-btn text class="d-none d-md-flex" @click="logoLinkTo">
@@ -82,6 +82,10 @@
         </v-toolbar-title>
       </v-btn>
       <v-spacer></v-spacer>
+      <v-btn text @click="changeTheme">
+        <v-icon>mdi-image-multiple</v-icon>
+        <div class="d-none d-md-flex">{{isDark ? 'Light' : 'Dark'}}</div>
+      </v-btn>
       <v-btn text>
         <v-icon>mdi-card-text-outline</v-icon>
         <div class="d-none d-md-flex">Notice</div>
@@ -151,6 +155,14 @@
                     // 若处于登录状态，则只在 Welcome 页面隐藏 drawer
                     return this.$route.path !== '/';
                 }
+            },
+            isDark: function () {
+                // 当前页面是否是深色主题
+                return this.$vuetify.theme.dark;
+            },
+            whiteOpacity: function () {
+                // 用来调整组件在不同主题下的透明度
+                return this.isDark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.3)';
             }
         },
         methods: {
@@ -189,6 +201,9 @@
             logout: function () {
                 this.$store.commit('logout');
                 this.$router.push({path: '/login'});
+            },
+            changeTheme: function () {
+                this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
             }
         }
     }

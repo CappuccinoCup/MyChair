@@ -1,5 +1,5 @@
 <template>
-  <v-app id="register">
+  <v-app id="register" :class="bgStlye">
     <v-overlay :value="overlay">
       <v-progress-circular indeterminate size="64"></v-progress-circular>
     </v-overlay>
@@ -15,9 +15,9 @@
       <v-container fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="5">
-            <v-card shaped color="rgba(255,255,255,0.3)" id="register_base">
+            <v-card shaped :color="whiteOpacity" id="register_base">
               <v-card-text>
-                <v-toolbar flat>
+                <v-toolbar flat color="rgba(255,255,255,0)">
                   <v-toolbar-title class="display-1">Register</v-toolbar-title>
                   <v-spacer/>
                   <v-tooltip bottom>
@@ -154,6 +154,13 @@
                     organization: this.organization,
                     region: this.region
                 }
+            },
+            whiteOpacity: function () {
+                // 用来调整组件在不同主题下的透明度
+                return this.$vuetify.theme.dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.3)';
+            },
+            bgStlye: function () {
+                return this.$vuetify.theme.dark ? 'darkBg' : 'lightBg';
             }
         },
         watch: {
@@ -320,8 +327,12 @@
 </script>
 
 <style>
-  #register {
-    background: url("/img/welcome_bg.jpg") center;
+  .lightBg {
+    background: url("/img/light_bg.jpg") center fixed !important;
+  }
+
+  .darkBg {
+    background: url("/img/dark_bg.jpg") center fixed !important;
   }
 
   #register_base {
