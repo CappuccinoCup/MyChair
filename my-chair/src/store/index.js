@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     // 从本地存取，防止页面刷新时数据丢失
     token: localStorage.getItem('token') || null,
-    userDetails: JSON.parse(localStorage.getItem('userDetails')) || null
+    userDetails: JSON.parse(localStorage.getItem('userDetails')) || null,
+    themeIsDark: localStorage.getItem('theme') === 'dark'
   },
   mutations: {
     login(state, data) {
@@ -22,6 +23,13 @@ export default new Vuex.Store({
       localStorage.removeItem('userDetails');
       state.userDetails = null;
       state.token = null;
+    },
+    changeTheme(state, dark) {
+      // 将当前主题储存起来
+      const theme = dark ? 'dark' : 'light';
+      localStorage.removeItem('theme');
+      localStorage.setItem('theme', theme);
+      state.themeIsDark = dark;
     }
   },
   actions: {},

@@ -1,5 +1,16 @@
 <template>
   <div id="navigation">
+    <v-overlay :value="confirmLogout">
+      <v-card shaped :color="whiteOpacity">
+        <v-card-title class="headline">Logout</v-card-title>
+        <v-card-text class="title">Are you sure to logout?</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn :color="whiteOpacity" rounded @click="confirmLogout = false">No</v-btn>
+          <v-btn :color="whiteOpacity" rounded @click="logout">Yes</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-overlay>
     <v-navigation-drawer app clipped v-model="drawer" v-if="drawerVisible">
       <v-list rounded>
         <v-subheader class="title">Navigation</v-subheader>
@@ -113,7 +124,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn text v-if="hasLoggedIn" @click="logout">
+      <v-btn text v-if="hasLoggedIn" @click="confirmLogout = true">
         <v-icon>mdi-logout</v-icon>
         <div class="d-none d-md-flex">Logout</div>
       </v-btn>
@@ -140,7 +151,8 @@
                             // TODO: developing more about user's account
                         }
                     }
-                ]
+                ],
+                confirmLogout: false
             }
         },
         computed: {
@@ -204,6 +216,7 @@
             },
             changeTheme: function () {
                 this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+                this.$store.commit('changeTheme', this.$vuetify.theme.dark);
             }
         }
     }

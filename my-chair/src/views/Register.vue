@@ -50,6 +50,9 @@
                                 ref="confirmPassword" outlined clearable type="password"
                                 :rules="[() => !!confirmPassword || 'please input your password again']"
                                 :error-messages="messages.confirmPassword"></v-text-field>
+                  <v-text-field v-model="realname" label="realname" append-icon="mdi-file-account"
+                                ref="realname" outlined clearable
+                                :rules="[() => !!realname || 'realname is required']"></v-text-field>
                   <v-text-field v-model="email" label="email" append-icon="mdi-email"
                                 ref="email" outlined clearable
                                 :rules="[() => !!email || 'email is required']"
@@ -92,6 +95,7 @@
                 username: '',
                 password: '',
                 confirmPassword: '',
+                realname: '',
                 email: '',
                 organization: '',
                 region: '',
@@ -150,6 +154,7 @@
                     username: this.username,
                     password: this.password,
                     confirmPassword: this.confirmPassword,
+                    realname: this.realname,
                     email: this.email,
                     organization: this.organization,
                     region: this.region
@@ -290,6 +295,7 @@
                     this.$axios.post('/register', {
                             username: this.username,
                             password: this.password,
+                            realname: this.realname,
                             email: this.email,
                             organization: this.organization,
                             region: this.region
@@ -333,9 +339,5 @@
 
   .darkBg {
     background: url("/img/dark_bg.jpg") center fixed !important;
-  }
-
-  #register_base {
-    margin-top: 20px;
   }
 </style>

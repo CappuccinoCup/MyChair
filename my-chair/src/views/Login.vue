@@ -16,7 +16,7 @@
       <v-container fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="5">
-            <v-card shaped :color="whiteOpacity" id="login_base">
+            <v-card shaped :color="whiteOpacity" id="loginBase">
               <v-card-text>
                 <v-toolbar flat color="rgba(255,255,255,0)">
                   <v-toolbar-title class="display-1">Login</v-toolbar-title>
@@ -170,7 +170,7 @@
     background: url("/img/dark_bg.jpg") center fixed !important;
   }
 
-  #login_base {
+  #loginBase {
     margin-top: 100px;
   }
 </style>
