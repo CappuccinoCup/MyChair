@@ -1,6 +1,6 @@
 <template>
   <div id="navigation">
-    <v-overlay :value="confirmLogout">
+    <v-overlay :value="confirmLogout" opacity="0.9">
       <v-card shaped :color="whiteOpacity">
         <v-card-title class="headline">Logout</v-card-title>
         <v-card-text class="title">Are you sure to logout?</v-card-text>
