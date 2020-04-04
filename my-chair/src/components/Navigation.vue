@@ -87,20 +87,45 @@
     <v-app-bar app clipped-left flat :color="whiteOpacity">
       <v-app-bar-nav-icon class="d-lg-none" v-if="drawerVisible" @click.stop="drawer = !drawer"/>
       <v-img src="../assets/MyChair_logo.png" alt="MyChair Logo" max-height="50px" max-width="50px"></v-img>
-      <v-btn text class="d-none d-md-flex" @click="logoLinkTo">
+      <v-btn text class="d-none d-md-flex" @click="openHome">
         <v-toolbar-title class="headline">
           MyChair
         </v-toolbar-title>
       </v-btn>
       <v-spacer></v-spacer>
+      <v-btn text v-if="hasLoggedIn" @click="openHome">
+        <v-icon>mdi-home-outline</v-icon>
+        <div class="d-none d-md-flex">Home</div>
+      </v-btn>
       <v-btn text @click="changeTheme">
         <v-icon>mdi-image-multiple</v-icon>
         <div class="d-none d-md-flex">{{isDark ? 'Light' : 'Dark'}}</div>
       </v-btn>
-      <v-btn text>
+      <v-btn text v-if="hasLoggedIn">
         <v-icon>mdi-card-text-outline</v-icon>
-        <div class="d-none d-md-flex">Notice</div>
+        <div class="d-none d-md-flex">Message</div>
       </v-btn>
+
+      <v-menu open-on-hover bottom offset-y v-if="hasLoggedIn">
+        <template v-slot:activator="{ on }">
+          <v-btn text v-on="on">
+            <v-icon>mdi-account-circle-outline</v-icon>
+            <div class="d-none d-md-flex">Account</div>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item>
+            <v-list-item-title>{{username}}</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-title>more</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="confirmLogout = true">
+            <v-list-item-title>logout</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
       <v-btn text v-if="!hasLoggedIn" @click="openLogin">
         <v-icon>mdi-login</v-icon>
         <div class="d-none d-md-flex">Login</div>
@@ -110,24 +135,6 @@
         <div class="d-none d-md-flex">Register</div>
       </v-btn>
 
-      <v-menu open-on-hover bottom offset-y v-if="hasLoggedIn">
-        <template v-slot:activator="{ on }">
-          <v-btn text v-on="on">
-            <v-icon>mdi-account-circle-outline</v-icon>
-            <div class="d-none d-md-flex">Personal Center</div>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item v-for="(item, index) in items" :key="index" @click="item.linkTo">
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
-      <v-btn text v-if="hasLoggedIn" @click="confirmLogout = true">
-        <v-icon>mdi-logout</v-icon>
-        <div class="d-none d-md-flex">Logout</div>
-      </v-btn>
     </v-app-bar>
   </div>
 </template>
@@ -138,24 +145,13 @@
         data() {
             return {
                 drawer: null,
-                items: [
-                    {
-                        title: (this.$store.state.userDetails ? this.$store.state.userDetails.username : 'friend A'),
-                        linkTo: function () {
-                            // TODO: developing user's person center
-                        }
-                    },
-                    {
-                        title: 'more',
-                        linkTo: function () {
-                            // TODO: developing more about user's account
-                        }
-                    }
-                ],
                 confirmLogout: false
             }
         },
         computed: {
+            username: function () {
+                return this.$store.state.userDetails ? this.$store.state.userDetails.username : 'friend A';
+            },
             hasLoggedIn: function () {
                 return this.$store.state.token;
             },
@@ -178,7 +174,7 @@
             }
         },
         methods: {
-            logoLinkTo: function () {
+            openHome: function () {
                 if (this.hasLoggedIn) {
                     if (this.$route.path !== '/home') {
                         this.$router.push({path: '/home'});

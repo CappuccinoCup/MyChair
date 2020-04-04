@@ -29,32 +29,47 @@
                 <v-text-field v-model="place" label="conference place" ref="place"
                               outlined clearable prepend-icon="mdi-map-marker"
                               :rules="[() => !!place || 'conference place is required']"></v-text-field>
-                <v-menu v-model="menu1" :close-on-content-click="false" :nudge-right="50"
-                        transition="scale-transition" offset-y min-width="290px">
-                  <template v-slot:activator="{ on }">
-                    <v-text-field v-model="dateHeld" label="conference date" ref="dateHeld"
-                                  prepend-icon="mdi-calendar" outlined readonly v-on="on"
-                                  :rules="[() => !!dateHeld || 'conference date is required']"></v-text-field>
-                  </template>
-                  <v-date-picker v-model="dateHeld" @input="menu1 = false"></v-date-picker>
-                </v-menu>
-                <v-menu v-model="menu2" :close-on-content-click="false" :nudge-right="50"
+                <v-row>
+                  <v-col cols="6">
+                    <v-menu v-model="menu1" :close-on-content-click="false" :nudge-right="50"
+                            transition="scale-transition" offset-y min-width="290px">
+                      <template v-slot:activator="{ on }">
+                        <v-text-field v-model="dateStart" label="conference start date" ref="dateStart"
+                                      prepend-icon="mdi-calendar" outlined readonly v-on="on"
+                                      :rules="[() => !!dateStart || 'conference start date is required']"></v-text-field>
+                      </template>
+                      <v-date-picker v-model="dateStart" @input="menu1 = false"></v-date-picker>
+                    </v-menu>
+                  </v-col>
+                  <v-col cols="6">
+                    <v-menu v-model="menu2" :close-on-content-click="false" :nudge-right="50"
+                            transition="scale-transition" offset-y min-width="290px">
+                      <template v-slot:activator="{ on }">
+                        <v-text-field v-model="dateEnd" label="conference end date" ref="dateEnd"
+                                      prepend-icon="mdi-calendar" outlined readonly v-on="on"
+                                      :rules="[() => !!dateEnd || 'conference end date is required']"></v-text-field>
+                      </template>
+                      <v-date-picker v-model="dateEnd" @input="menu2 = false"></v-date-picker>
+                    </v-menu>
+                  </v-col>
+                </v-row>
+                <v-menu v-model="menu3" :close-on-content-click="false" :nudge-right="50"
                         transition="scale-transition" offset-y min-width="290px">
                   <template v-slot:activator="{ on }">
                     <v-text-field v-model="deadline" label="submission deadline" ref="deadline"
                                   prepend-icon="mdi-calendar-alert" outlined readonly v-on="on"
                                   :rules="[() => !!deadline || 'submission deadline is required']"></v-text-field>
                   </template>
-                  <v-date-picker v-model="deadline" @input="menu2 = false"></v-date-picker>
+                  <v-date-picker v-model="deadline" @input="menu3 = false"></v-date-picker>
                 </v-menu>
-                <v-menu v-model="menu3" :close-on-content-click="false" :nudge-right="50"
+                <v-menu v-model="menu4" :close-on-content-click="false" :nudge-right="50"
                         transition="scale-transition" offset-y min-width="290px">
                   <template v-slot:activator="{ on }">
-                    <v-text-field v-model="dateReleased" label="result announcement date" ref="dateReleased"
+                    <v-text-field v-model="dateRelease" label="result announcement date" ref="dateRelease"
                                   prepend-icon="mdi-calendar-check" outlined readonly v-on="on"
-                                  :rules="[() => !!dateReleased || 'result announcement date is required']"></v-text-field>
+                                  :rules="[() => !!dateRelease || 'result announcement date is required']"></v-text-field>
                   </template>
-                  <v-date-picker v-model="dateReleased" @input="menu3 = false"></v-date-picker>
+                  <v-date-picker v-model="dateRelease" @input="menu4 = false"></v-date-picker>
                 </v-menu>
               </v-form>
             </v-card-text>
@@ -87,12 +102,14 @@
                 shortname: '',
                 fullname: '',
                 place: '',
-                dateHeld: '',
+                dateStart: '',
+                dateEnd: '',
                 deadline: '',
-                dateReleased: '',
+                dateRelease: '',
                 menu1: false,
                 menu2: false,
                 menu3: false,
+                menu4: false,
                 formHasErrors: false,
                 overlay: false,
                 showSnackbar: false,
@@ -106,9 +123,10 @@
                     shortname: this.shortname,
                     fullname: this.fullname,
                     place: this.place,
-                    dateHeld: this.dateHeld,
+                    dateStart: this.dateStart,
+                    dateEnd: this.dateEnd,
                     deadline: this.deadline,
-                    dateReleased: this.dateReleased
+                    dateRelease: this.dateRelease
                 }
             },
             whiteOpacity: function () {
